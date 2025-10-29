@@ -6,3 +6,6 @@ __pycache__/
 # Secrets
 .env
 
+#csv 
+*.csv
+

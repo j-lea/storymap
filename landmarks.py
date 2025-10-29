@@ -132,3 +132,15 @@ if __name__ == "__main__":
                 for idx, x, y, landmark in indexed_landmarks:
                     print(f"{idx} | {x:.6f} | {y:.6f} | {landmark}")
                 print("="*40)
+
+                 # --- Save output to CSV ---
+                output_csv_file = "landmarks.csv"
+                try:
+                    with open(output_csv_file, mode='w', newline='', encoding='utf-8') as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow(["Index", "X (Longitude)", "Y (Latitude)", "Landmark"])
+                        for idx, x, y, landmark in indexed_landmarks:
+                            writer.writerow([idx, x, y, landmark])
+                    print(f"\n✅ Landmarks saved to CSV: {output_csv_file}")
+                except Exception as e:
+                    print(f"Error writing output CSV: {e}")
